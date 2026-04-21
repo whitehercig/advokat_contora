@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Адвокатская Контора — Алматы</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dark: #9A7A2E;
+    --dark: #0A0A0C;
+    --dark2: #111116;
+    --dark3: #18181F;
+    --dark4: #22222C;
+    --text: #F0EDE6;
+    --text-muted: #9A9086;
+    --border: rgba(201,168,76,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(10,10,12,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: padding 0.3s;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .nav-logo-icon {
+    width: 42px; height: 42px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; color: var(--gold);
+  }
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; letter-spacing: 0.08em;
+    color: var(--text);
+  }
+  .nav-logo-text span { color: var(--gold); }
+  .nav-links {
+    display: flex; gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text-muted); text-decoration: none;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid var(--gold);
+    padding: 0.55rem 1.4rem; text-decoration: none;
+    transition: all 0.25s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--dark); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 0 4rem;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+      linear-gradient(135deg, #0A0A0C 0%, #14121A 100%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-ornament {
+    position: absolute; right: 5%; top: 50%;
+    transform: translateY(-50%);
+    width: 520px; height: 520px;
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-ornament::before {
+    content: '';
+    position: absolute;
+    width: 420px; height: 420px;
+    border: 1px solid rgba(201,168,76,0.08);
+    border-radius: 50%;
+  }
+  .hero-ornament::after {
+    content: '';
+    position: absolute;
+    width: 320px; height: 320px;
+    border: 1px solid rgba(201,168,76,0.06);
+    border-radius: 50%;
+  }
+  .hero-shield {
+    width: 120px; height: 120px;
+    position: relative; z-index: 1;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 620px;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+  .hero-badge::before {
+    content: ''; width: 20px; height: 1px; background: var(--gold);
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 700; line-height: 1.1;
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.01em;
+  }
+  h1 em {
+    font-style: italic; color: var(--gold);
+    display: block;
+  }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 300;
+    color: var(--text-muted); line-height: 1.7;
+    margin-bottom: 2.5rem; max-width: 480px;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; align-items: center;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--dark);
+    padding: 0.9rem 2.2rem;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 600; text-decoration: none;
+    transition: all 0.25s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-ghost {
+    color: var(--text-muted);
+    padding: 0.9rem 1.5rem;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    text-decoration: none; transition: color 0.25s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-ghost:hover { color: var(--gold); }
+  .btn-ghost::after { content: '→'; font-size: 14px; }
+
+  /* STATS STRIP */
+  .stats-strip {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--dark2);
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .stat-item {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-muted); margin-top: 0.5rem;
+  }
+
+  /* SECTION BASE */
+  section { padding: 6rem 4rem; }
+  .section-tag {
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-tag::before {
+    content: ''; flex: 0 0 30px; height: 1px; background: var(--gold);
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 600; line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ABOUT */
+  .about { background: var(--dark2); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+  }
+  .about-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; color: var(--text-muted);
+    line-height: 1.9; margin-bottom: 1.2rem;
+  }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+  .about-visual {
+    position: relative;
+  }
+  .about-card {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+  }
+  .about-card-header {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .about-avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--dark4);
+    border: 2px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; color: var(--gold);
+  }
+  .about-name {
+    font-family: 'Playfair Display', serif; font-size: 1.1rem;
+  }
+  .about-title-sub {
+    font-size: 11px; letter-spacing: 0.1em;
+    color: var(--text-muted); margin-top: 3px;
+  }
+  .about-stars {
+    display: flex; gap: 4px; margin-bottom: 1rem;
+  }
+  .star { color: var(--gold); font-size: 14px; }
+  .about-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; color: var(--text-muted);
+    line-height: 1.7; font-style: italic;
+  }
+  .about-accent {
+    position: absolute; top: -20px; right: -20px;
+    width: 80px; height: 80px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border);
+    margin-top: 3rem;
+  }
+  .service-card {
+    background: var(--dark);
+    padding: 2.5rem 2rem;
+    transition: background 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .service-card:hover { background: var(--dark3); }
+  .service-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px; background: var(--gold);
+    transform: scaleX(0); transition: transform 0.3s;
+    transform-origin: left;
+  }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-icon {
+    width: 44px; height: 44px; margin-bottom: 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--border);
+  }
+  .service-icon svg { width: 22px; height: 22px; fill: var(--gold); }
+  .service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; margin-bottom: 0.8rem;
+  }
+  .service-desc {
+    font-size: 13px; color: var(--text-muted); line-height: 1.7;
+  }
+  .service-num {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; color: rgba(201,168,76,0.06);
+    font-weight: 700; line-height: 1;
+  }
+
+  /* WHY US */
+  .why { background: var(--dark2); }
+  .why-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; align-items: start; margin-top: 3rem;
+  }
+  .why-list { list-style: none; }
+  .why-item {
+    display: flex; gap: 1.5rem; padding: 1.8rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .why-item:last-child { border-bottom: none; }
+  .why-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; color: var(--gold-dark);
+    min-width: 36px; line-height: 1;
+  }
+  .why-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; margin-bottom: 0.4rem;
+  }
+  .why-content p {
+    font-size: 13px; color: var(--text-muted); line-height: 1.7;
+  }
+  .why-image {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    height: 100%; min-height: 400px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding: 3rem;
+  }
+  .why-image-inner {
+    text-align: center;
+  }
+  .big-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 7rem; color: var(--gold); line-height: 1;
+    opacity: 0.9;
+  }
+  .big-label {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-muted); margin-top: 0.5rem;
+  }
+
+  /* REVIEWS */
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .review-card {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+  }
+  .review-quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem; color: var(--gold);
+    line-height: 0.6; margin-bottom: 1rem; display: block;
+    opacity: 0.6;
+  }
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; color: var(--text-muted);
+    line-height: 1.8; margin-bottom: 1.5rem;
+  }
+  .review-author {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text); font-weight: 500;
+  }
+  .review-date { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+
+  /* CONTACT */
+  .contact { background: var(--dark3); }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; margin-top: 3rem;
+  }
+  .contact-info-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+  .contact-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 16px;
+  }
+  .contact-detail-label {
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 4px;
+  }
+  .contact-detail-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; color: var(--text);
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-input {
+    background: var(--dark4);
+    border: 1px solid var(--border);
+    color: var(--text); padding: 1rem 1.2rem;
+    font-family: 'Montserrat', sans-serif; font-size: 13px;
+    outline: none; width: 100%;
+    transition: border-color 0.25s;
+  }
+  .form-input:focus { border-color: var(--gold); }
+  .form-input::placeholder { color: var(--text-muted); }
+  textarea.form-input { resize: none; height: 120px; }
+  .form-submit {
+    background: var(--gold); color: var(--dark);
+    border: none; padding: 1rem 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 600; cursor: pointer;
+    transition: background 0.25s; text-align: center;
+  }
+  .form-submit:hover { background: var(--gold-light); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    border-top: 1px solid var(--border);
+    padding: 3rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; color: var(--gold);
+  }
+  .footer-copy {
+    font-size: 11px; color: var(--text-muted);
+  }
+  .footer-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .footer-links a {
+    font-size: 11px; color: var(--text-muted);
+    text-decoration: none; letter-spacing: 0.1em;
+    transition: color 0.25s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* WHATSAPP FLOAT */
+  .wa-float {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #25D366; display: flex; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    transition: transform 0.2s;
+  }
+  .wa-float:hover { transform: scale(1.1); }
+  .wa-float svg { width: 28px; height: 28px; fill: white; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content > * { animation: fadeUp 0.8s ease both; }
+  .hero-badge { animation-delay: 0.1s; }
+  h1 { animation-delay: 0.25s; }
+  .hero-sub { animation-delay: 0.4s; }
+  .hero-actions { animation-delay: 0.55s; }
+
+  @keyframes spin-slow {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-50%) rotate(360deg); }
+  }
+  .hero-ornament { animation: spin-slow 60s linear infinite; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links, .nav-cta { display: none; }
+    section, footer { padding: 4rem 1.5rem; }
+    .hero { padding: 0 1.5rem; }
+    .hero-ornament { display: none; }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); }
+    .about-grid, .why-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid, .reviews-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">⚖</div>
+    <div>
+      <div class="nav-logo-text"><span>Адвокатская</span> Контора</div>
+      <div style="font-size:9px;letter-spacing:0.15em;color:var(--text-muted);text-transform:uppercase">Алматы · Казахстан</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">О нас</a></li>
+    <li><a href="#services">Практики</a></li>
+    <li><a href="#why">Преимущества</a></li>
+    <li><a href="#reviews">Отзывы</a></li>
+    <li><a href="#contact">Контакты</a></li>
+  </ul>
+  <a href="https://wa.me/77000000000" class="nav-cta">Бесплатная консультация</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-ornament">
+    <svg class="hero-shield" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60 10 L100 28 L100 70 C100 90 80 108 60 115 C40 108 20 90 20 70 L20 28 Z" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+      <path d="M60 25 L88 39 L88 68 C88 84 76 98 60 104 C44 98 32 84 32 68 L32 39 Z" stroke="#C9A84C" stroke-width="0.5" fill="none" opacity="0.5"/>
+      <text x="60" y="75" text-anchor="middle" font-family="Playfair Display,serif" font-size="32" fill="#C9A84C" opacity="0.8">⚖</text>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">Юридические услуги · Алматы</div>
+    <h1>
+      Ваш надёжный<br>
+      <em>защитник</em><br>
+      по закону
+    </h1>
+    <p class="hero-sub">
+      Более 15 лет опыта в уголовных делах. Профессиональная защита ваших прав
+      на всех этапах судопроизводства — от первой консультации до победы.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Записаться на приём</a>
+      <a href="#services" class="btn-ghost">Наши практики</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">15+</div>
+    <div class="stat-label">Лет опыта</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">500+</div>
+    <div class="stat-label">Выигранных дел</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">4.9</div>
+    <div class="stat-label">Рейтинг на 2ГИС</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">30</div>
+    <div class="stat-label">Отзывов клиентов</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="section-tag">О нас</div>
+      <h2>Опыт. Честность.<br>Результат.</h2>
+      <p>
+        Наша <strong>адвокатская контора</strong> специализируется на уголовных делах любой сложности. 
+        Мы знаем, что значит оказаться в трудной ситуации — и именно поэтому с первого дня 
+        встаём на вашу сторону.
+      </p>
+      <p>
+        За 15 лет практики мы выработали системный подход: глубокий анализ дела, 
+        чёткая стратегия защиты и полная прозрачность перед клиентом на каждом этапе.
+      </p>
+      <p>
+        Мы работаем в <strong>Алматы</strong> и готовы выехать в любой регион Казахстана. 
+        Ваши права — наш приоритет.
+      </p>
+    </div>
+    <div class="about-visual">
+      <div class="about-accent"></div>
+      <div class="about-card">
+        <div class="about-card-header">
+          <div class="about-avatar">А</div>
+          <div>
+            <div class="about-name">Ведущий адвокат</div>
+            <div class="about-title-sub">Уголовные дела · 15+ лет</div>
+          </div>
+        </div>
+        <div class="about-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <div class="about-quote">
+          «Мы не просто ведём дела — мы защищаем людей. Каждый клиент для нас 
+          уникален, и каждое дело требует индивидуального подхода.»
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-tag">Практики</div>
+  <h2>Наши юридические<br>услуги</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+      </div>
+      <div class="service-name">Уголовная защита</div>
+      <div class="service-desc">Защита по уголовным делам любой категории — от предварительного следствия до кассационной инстанции.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+      </div>
+      <div class="service-name">Гражданские дела</div>
+      <div class="service-desc">Споры о собственности, семейные дела, трудовые конфликты — полное юридическое сопровождение.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      </div>
+      <div class="service-name">Досудебное урегулирование</div>
+      <div class="service-desc">Медиация, переговоры и мировые соглашения — решаем споры без лишних судебных издержек.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.36C18 2.53 16.5 1 14.45 1c-1.16 0-2.18.58-2.93 1.44L11 3.15l-.52-.71C9.73 1.58 8.71 1 7.55 1 5.5 1 4 2.53 4 4.64c0 .48.11.92.18 1.36H2v13h20V6z"/></svg>
+      </div>
+      <div class="service-name">Экономические преступления</div>
+      <div class="service-desc">Мошенничество, коррупция, налоговые преступления — специализированная защита бизнеса.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      </div>
+      <div class="service-name">Правовые консультации</div>
+      <div class="service-desc">Разъяснение ваших прав и обязанностей, анализ ситуации, первичная оценка перспектив дела.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+      </div>
+      <div class="service-name">Апелляции и жалобы</div>
+      <div class="service-desc">Обжалование приговоров и решений в апелляционной, кассационной и надзорной инстанциях.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="why-grid">
+    <div>
+      <div class="section-tag">Преимущества</div>
+      <h2>Почему выбирают нас</h2>
+      <ul class="why-list">
+        <li class="why-item">
+          <div class="why-num">01</div>
+          <div class="why-content">
+            <h3>15 лет реального опыта</h3>
+            <p>Сотни закрытых уголовных дел. Мы знаем казахстанскую судебную систему изнутри.</p>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-num">02</div>
+          <div class="why-content">
+            <h3>Полная конфиденциальность</h3>
+            <p>Адвокатская тайна гарантирована. Ваши данные не покинут наш офис.</p>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-num">03</div>
+          <div class="why-content">
+            <h3>Прозрачные гонорары</h3>
+            <p>Чёткие условия до начала работы. Никаких скрытых платежей и неожиданных счетов.</p>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-num">04</div>
+          <div class="why-content">
+            <h3>Доступность 24/7</h3>
+            <p>В экстренных ситуациях мы на связи круглосуточно. Задержание, обыск — звоните немедленно.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="why-image">
+      <div class="why-image-inner">
+        <div class="big-number">4.9</div>
+        <div class="big-label">Средний рейтинг · 2ГИС</div>
+        <div style="margin-top:2rem;display:flex;justify-content:center;gap:6px;">
+          <span class="star" style="font-size:20px;">★</span>
+          <span class="star" style="font-size:20px;">★</span>
+          <span class="star" style="font-size:20px;">★</span>
+          <span class="star" style="font-size:20px;">★</span>
+          <span class="star" style="font-size:20px;">★</span>
+        </div>
+        <div style="margin-top:1rem;font-size:12px;color:var(--text-muted);letter-spacing:0.1em;">30 ОТЗЫВОВ КЛИЕНТОВ</div>
+        <div style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border);">
+          <div style="font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--gold);">100%</div>
+          <div style="font-size:11px;color:var(--text-muted);letter-spacing:0.15em;margin-top:4px;text-transform:uppercase;">Клиентов рекомендуют нас</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-tag">Отзывы</div>
+  <h2>Нам доверяют клиенты</h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <p class="review-text">Обратился в сложной ситуации — уголовное дело казалось безнадёжным. Адвокат разобрал всё до деталей и добился прекращения дела. Профессионализм на высшем уровне.</p>
+      <div class="about-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <div class="review-author">Асылбек М.</div>
+      <div class="review-date">Алматы, 2024</div>
+    </div>
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <p class="review-text">Очень благодарна за помощь в семейном деле. Всё объяснили понятно, держали в курсе каждого шага. Результатом полностью довольна. Рекомендую всем знакомым.</p>
+      <div class="about-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <div class="review-author">Гүлнара С.</div>
+      <div class="review-date">Алматы, 2024</div>
+    </div>
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <p class="review-text">Когда задержали сына — не знал куда бежать. Позвонил, и уже через час адвокат был рядом. Дело закончилось наилучшим образом. Спасибо за оперативность!</p>
+      <div class="about-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <div class="review-author">Нурлан К.</div>
+      <div class="review-date">Алматы, 2023</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-tag">Контакты</div>
+  <h2>Запишитесь на<br>консультацию</h2>
+  <div class="contact-grid">
+    <div>
+      <div class="contact-info-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-detail-label">Адрес</div>
+          <div class="contact-detail-value">ЖК Шугыла City, мкр. Шугыла<br>340/4 к18, офис 104 (цокольный этаж)<br>Наурызбайский район, Алматы</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-detail-label">Часы работы</div>
+          <div class="contact-detail-value">Ежедневно с 9:00 до 19:00<br><span style="font-size:0.9rem;color:var(--text-muted)">Экстренная связь — 24/7</span></div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">💬</div>
+        <div>
+          <div class="contact-detail-label">WhatsApp</div>
+          <div class="contact-detail-value">Написать в WhatsApp<br><span style="font-size:0.9rem;color:var(--text-muted)">Ответим в течение 15 минут</span></div>
+        </div>
+      </div>
+      <div style="margin-top:1rem;padding:1.5rem;background:var(--dark4);border:1px solid var(--border);">
+        <div style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Первая консультация</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.4rem;">Бесплатно</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Расскажите о вашей ситуации — мы оценим перспективы</div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <div class="form-row">
+          <input type="text" class="form-input" placeholder="Ваше имя">
+          <input type="tel" class="form-input" placeholder="Телефон">
+        </div>
+        <input type="text" class="form-input" placeholder="Тема обращения">
+        <textarea class="form-input" placeholder="Кратко опишите вашу ситуацию..."></textarea>
+        <button class="form-submit" onclick="this.textContent='Отправлено ✓';this.style.background='var(--gold-dark)'">
+          Отправить заявку
+        </button>
+        <div style="font-size:11px;color:var(--text-muted);text-align:center;">
+          Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">⚖ Адвокатская Контора</div>
+  <ul class="footer-links">
+    <li><a href="#about">О нас</a></li>
+    <li><a href="#services">Услуги</a></li>
+    <li><a href="#contact">Контакты</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Алматы, Казахстан</div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/77000000000" class="wa-float" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // Smooth active nav highlighting
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--gold)' : '';
+    });
+  });
+</script>
+</body>
+</html>
